@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-webproject
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/app
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+          target: /app
