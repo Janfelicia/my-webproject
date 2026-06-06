@@ -1,7 +1,9 @@
 services:
   website:
-    image: nginx:alpine
+    build: .
     ports:
       - "8080:80"
-    volumes:
-      - .:/usr/share/nginx/html
+    develop:
+      watch:
+        - action: rebuild
+          path: .
